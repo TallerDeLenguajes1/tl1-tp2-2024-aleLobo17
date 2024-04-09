@@ -1,0 +1,10 @@
+2_f)
+No se puede ver el archivo tp2_1_2.c ya que se encuentra en otra rama, no en la principal,
+al crear un branch este hace una copia de la carpeta que no podemos persibir pero esta,
+es otra version de la misma carpeta.
+
+Al agregar el archivo Respuestas.txt y volver a ejecutar gitk -all nos muestra la rama principal
+que sigue el main y vemos como sale la rama secundaria creada "Opcion_2"
+
+Al usar el (merge) combina la carpeta de los dos caminos y la muestra como si fuese una sola,
+pero siguen siendo dos ramas distintas
