@@ -11,16 +11,23 @@ struct compu {
     char tipo_cpu; //valores del arreglo tipos
 }typedef compu;
 
-void cargarCompu(compu *pc);
+void cargarCompu(compu *pc,int cantidad);
 void mostrarCompu(compu *pc);
 void mostrarCompuMasVieja(compu *pc);
 void mostrarCompuMasRapida(compu *pc);
 int main(){
-    char tipos[6]={"Intel", "AMD", "Celeron", "Athlon", "Core", "Pentium"};
+    char tipos[6][100]={"Intel", "AMD", "Celeron", "Athlon", "Core", "Pentium"};
+    printf("%s\n", tipos[4]);
+
+
+    
     compu *pc;
-    cargarCompu(pc);
+    int cantidad = 5;
+    pc = (compu*)malloc(cantidad * sizeof(compu));
+    cargarCompu(pc, cantidad);
     /*char tipo_cpu=tipos;
     tipo_cpu = tipos;*/
+    
     printf("\nMuestro todas las compus: \n");
     mostrarCompu(pc);
     printf("\nMuestro compu mas rapida: \n");
@@ -30,15 +37,15 @@ int main(){
     return 0;
 }
 
-void cargarCompu(compu *pc){
-    char tipos[6]={"Intel", "AMD", "Celeron", "Athlon", "Core", "Pentium"};
+void cargarCompu(compu *pc,int cantidad){
+    //char tipos[55]={"Intel", "AMD", "Celeron", "Athlon", "Core", "Pentium"};
     int tipo;
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < cantidad; i++)
     {
         pc->velocidad= 1 + rand() %4;
         pc->anio= 2015 + rand() %10;
         tipo = rand() %6;
-        pc->tipo_cpu = tipos[tipo];
+        //pc->tipo_cpu = tipos[tipo];
         pc->cantidad = 1 + rand() %9;
         *pc++;
     }
@@ -48,9 +55,10 @@ void mostrarCompu(compu *pc){
     for (int i = 0; i < 5; i++)
     {
         printf("velocidad: %d\n", (pc + i)->velocidad);
-        printf("Año: %d\n", (pc + i)->anio);
+        printf("Anio: %d\n", (pc + i)->anio);
         printf("Tipo: %s\n", (pc + i)->tipo_cpu);
         printf("Cantidad: %d\n", (pc + i)->cantidad);
+        printf("\n");
     }  
 }
 
@@ -69,7 +77,7 @@ void mostrarCompuMasVieja(compu *pc){
         }    
     }  
     printf("velocidad: %d\n", (pc + j)->velocidad);
-    printf("Año: %d\n", (pc + j)->anio);
+    printf("Anioo: %d\n", (pc + j)->anio);
     printf("Tipo: %s\n", (pc + j)->tipo_cpu);
     printf("Cantidad: %d\n", (pc + j)->cantidad);
 }
@@ -89,7 +97,7 @@ void mostrarCompuMasRapida(compu *pc){
         
     }  
     printf("velocidad: %d\n", (pc + j)->velocidad);
-    printf("Año: %d\n", (pc + j)->anio);
+    printf("Anio: %d\n", (pc + j)->anio);
     printf("Tipo: %s\n", (pc + j)->tipo_cpu);
     printf("Cantidad: %d\n", (pc + j)->cantidad);
 }
